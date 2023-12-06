@@ -1,0 +1,15 @@
+#!/bin/bash
+echo "starting to configure files for project 1"
+echo "configuring readTemp"
+g++ readTemp.cpp AnalogIn.cpp -o readTemp -lpaho-mqtt3c
+echo "configuring tempThresh"
+g++ tempThresh.cpp LED.cpp -o tempThresh -lpaho-mqtt3c
+echo "configuring textBoxBlink"
+g++ textBoxBlink.cpp LED.cpp -o textBoxBlink -lpaho-mqtt3c
+echo "configuring pushbuttonStat"
+config-pin p8.16 gpio_pu
+g++ pushbuttonStat.cpp GPIO.cpp -o pushbuttonStat -lpaho-mqtt3c
+echo "configuring toggleLED"
+config-pin p9.12 gpio
+g++ toggleLED.cpp GPIO.cpp -o toggleLED -lpaho-mqtt3c
+echo "finished"
